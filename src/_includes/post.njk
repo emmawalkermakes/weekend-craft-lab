@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <header class="post-head">
+    <p class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> &middot; {{ content | readingTime }}</p>
+    <h1>{{ title }}</h1>
+    {%- if description %}<p class="lede">{{ description }}</p>{% endif %}
+  </header>
+  <div class="prose">
+{{ content | safe }}
+  </div>
+  <footer class="post-foot">
+    <p class="disclosure">{{ site.disclosure }}</p>
+    <p><a href="/">&larr; All posts</a></p>
+  </footer>
+</article>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set pageTitle = (title + " | " + site.title) if title and title != site.title else site.title + " | " + site.tagline %}
+{%- set pageDesc = description or site.description %}
+{%- set canonical = page.url | absUrl(site.url) %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDesc }}">
+<link rel="canonical" href="{{ canonical }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:description" content="{{ pageDesc }}">
+<meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:locale" content="en_AU">
+<meta property="og:image" content="{{ '/assets/og.png' | absUrl(site.url) }}">
+{%- if layout == 'post.njk' %}
+<meta property="article:published_time" content="{{ page.date | isoDate }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="{{ site.themeColour }}">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/">{{ site.title }}</a>
+    <nav aria-label="Main">
+      <a href="/">Posts</a>
+      {%- if site.tool %}<a href="{{ site.tool.url }}">{{ site.tool.label }}</a>{% endif %}
+      <a href="/about/">About</a>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; {{ "" | year }} {{ site.title }}. An independent hobby blog written in Brisbane, Australia.</p>
+    <p><a href="/about/">About &amp; disclosure</a> &middot; <a href="/feed.xml">RSS</a> &middot; <a href="/sitemap.xml">Sitemap</a></p>
+  </div>
+</footer>
+</body>
+</html>

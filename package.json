@@ -1,0 +1,15 @@
+{
+  "name": "weekend-craft-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Weekend-sized DIY craft projects you can start with what's in the cupboard.",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}
